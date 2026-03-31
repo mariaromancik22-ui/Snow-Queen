@@ -6,6 +6,6 @@
 |-----------|----------|------|
 | Use Case | Варианты использования системы | [doc/use_case.md](doc/use_case.md) |
 | Class | Диаграмма классов (ООП структура) | [doc/class.md](doc/class.md) |
-| Activity | Алгоритм работы системы | |
+| Activity | Алгоритм работы системы | [doc/activity.md](doc/activity.md) | 
 | Sequence | Пошаговое взаимодействие объектов | |
 | State | Жизненный цикл Золотого Яйца | |

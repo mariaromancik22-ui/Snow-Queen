@@ -1,0 +1,47 @@
+@startuml
+skinparam state {
+  BackgroundColor<<Warm>> #lightgreen
+  BackgroundColor<<Frozen>> #lightblue
+  BackgroundColor<<Melting>> #lightyellow
+}
+
+title Жизненный цикл сердца Кая
+
+[*] --> Frozen : <<create>>
+
+state Frozen : Замороженное сердце
+state Melting : Тающее сердце
+state Warm : Живое сердце <<Warm>>
+
+state choice1 <<choice>>
+state choice2 <<choice>>
+
+Frozen --> choice1 : воздействовать(сила)
+
+choice1 --> Frozen : [сила < 5]\n(слёз недостаточно)
+choice1 --> Melting : [5 <= сила < 10]\n(первые слёзы)
+
+Melting --> choice2 : воздействовать(сила)
+
+choice2 --> Melting : [5 <= сила < 10]\n(таяние продолжается)
+choice2 --> Warm : [сила >= 10]\n(полное оттаивание)
+choice2 --> Frozen : [сила < 5]\n(откат к холоду)
+
+Warm --> [*] : <<destroy>>
+
+note right of choice1
+  **Первая точка выбора**
+  Проверяет силу слезы:
+  - < 5 → остаётся Frozen
+  - от 5 до 10 → переходит в Melting
+end note
+
+note right of choice2
+  **Вторая точка выбора**
+  Из Melting:
+  - < 5 → возврат в Frozen
+  - от 5 до 10 → остаётся в Melting
+  - >= 10 → переходит в Warm
+end note
+
+@enduml
